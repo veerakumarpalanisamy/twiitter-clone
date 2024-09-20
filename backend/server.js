@@ -8,7 +8,7 @@ import userRoutes from "./routes/user.route.js";
 import postRoutes from "./routes/post.route.js";
 import notificationRoutes from "./routes/notification.route.js";
 
-
+import cors from "cors"
 import connectMongoDB from "./db/connectMongoDb.js";
 
 dotenv.config();
@@ -25,7 +25,7 @@ const PORT = process.env.PORT || 5000;
 
 app.use(express.json()); // to parse req.body
 app.use(express.urlencoded({ extended: true })); // to parse form data (urlencoded)
-
+app.use(cors())
 app.use(cookieParser());
 
 app.use("/api/auth",authRoutes);

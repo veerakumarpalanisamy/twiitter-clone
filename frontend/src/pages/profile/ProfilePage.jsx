@@ -18,7 +18,7 @@ const ProfilePage = () => {
 	const [feedType, setFeedType] = useState("posts");
 
 	const coverImgRef = useRef(null);
-	const profileImgRef = useRef(null); 
+	const profileImgRef = useRef(null);
 
 	const isLoading = false;
 	const isMyProfile = true;
@@ -84,14 +84,14 @@ const ProfilePage = () => {
 								<input
 									type='file'
 									hidden
-                                    accept="image/*"
+									accept="image/*"
 									ref={coverImgRef}
 									onChange={(e) => handleImgChange(e, "coverImg")}
 								/>
 								<input
 									type='file'
 									hidden
-                                    accept="image/*"
+									accept="image/*"
 									ref={profileImgRef}
 									onChange={(e) => handleImgChange(e, "profileImg")}
 								/>
