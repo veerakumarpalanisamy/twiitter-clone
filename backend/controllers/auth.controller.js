@@ -4,7 +4,7 @@ import bcrypt from "bcrypt"
 
 export const signup = async (req,res) => {
     try{
-       const {fullname, username, email, password} = req.body;
+       const {fullName, username, email, password} = req.body;
 
        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
        if(!emailRegex.test(email)) {
@@ -29,7 +29,7 @@ export const signup = async (req,res) => {
        const hashedPassword = await bcrypt.hash(password, salt);
 
        const newUser = new User({
-        fullname,
+        fullName,
         username,
         email,
         password:hashedPassword
@@ -41,7 +41,7 @@ export const signup = async (req,res) => {
 
         res.status(201).json({
             _id: newUser._id,
-            fullname: newUser.fullname,
+            fullName: newUser.fullName,
             username: newUser.username,
             email:newUser.email,
             followers: newUser.followers,
@@ -56,9 +56,9 @@ export const signup = async (req,res) => {
 
     } catch (error){
         console.log("Error in signup controller", error.message);
-        res.status(500).json({ error: "Internal Server Error" });
+        res.status(500).json({ error: "Internal Server Error",message: error.message });
     }
-;}
+};
 
 export const login = async (req,res) => {
    try {
@@ -75,7 +75,7 @@ export const login = async (req,res) => {
 
     res.status(200).json({
         _id: user._id,
-        fullname: user.fullname,
+        fullName: user.fullName,
         username: user.username,
         email:user.email,
         followers: user.followers,
